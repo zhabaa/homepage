@@ -1,18 +1,28 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
 
 :root {
-  --bg: #5f4b8b;
   --fg: #ffffff;
   --secondaryFg: #b3b3b3;
   --containerBg: #272727;
-  --searchBg: var(--containerBg);
   --scrollbarColor: #3f3f3f;
-  --fontFamily: 'Roboto Mono', monospace;
+  --fontFamily: "Roboto Mono", monospace;
+  --background-image: url("../images/bg-image3.jpeg");
 }
 
 body {
-  background-color: var(--bg);
-  margin: 0px;
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--background-image) center / cover no-repeat;
+  filter: blur(5px);
+  z-index: -1;
 }
 
 .container {
@@ -25,10 +35,9 @@ body {
 }
 
 #clock {
-  font-family: sans-serif;
+  font-family: var(--fontFamily);
   font-size: 3.5rem;
   font-weight: 600;
-  font-family: var(--fontFamily);
   color: var(--fg);
   margin-bottom: 0.25em;
 }
@@ -36,10 +45,9 @@ body {
 #search {
   width: 100%;
   height: 100vh;
-  background-color: var(--searchBg);
+  background-color: var(--containerBg);
   display: none;
   position: absolute;
-  box-sizing: border-box;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -48,15 +56,14 @@ body {
 #search-field {
   width: 90%;
   padding: 0.75em 1em;
-  box-sizing: border-box;
-  background-color: var(--searchBg);
-  border: solid 0px var(--searchBg);
+  background-color: var(--containerBg);
+  border: none;
   font-family: var(--fontFamily);
   font-size: 4rem;
   color: var(--fg);
   outline: none;
-  border-radius: 3px;
-  margin-bottom: 1em;
+  border-radius: 5px;
+  margin: 3em 0 1em;
   text-align: center;
 }
 
@@ -64,87 +71,78 @@ body {
   width: 30%;
   background-color: var(--containerBg);
   padding: 1em;
-  border-radius: 3px;
+  border-radius: 10px;
   font-family: var(--fontFamily);
+  font-size: 1.7rem;
   color: var(--fg);
   text-align: center;
-}
-.inline {
-  display: inline-block;
 }
 
 #bookmark-container {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   width: 50%;
-  margin: 1em 0em;
-}
-
-@media only screen and (max-width: 960px) {
-  .container {
-    height: auto;
-  }
-  #clock {
-    margin-top: 1em;
-  }
-  .container > #bookmark-container {
-    flex-direction: column;
-    width: 60%;
-  }
-  #bookmark-container > .bookmark-set {
-    width: auto;
-    margin: 1em 0em;
-  }
+  margin: 1em 0;
 }
 
 .bookmark-set {
-  padding: 1em;
+  padding: 1.7em;
   background-color: var(--containerBg);
-  border-radius: 3px;
+  border-radius: 10px;
   font-family: var(--fontFamily);
-  font-size: 0.85rem;
-  width: 25%;
-  height: 12em;
-  margin: 0em 0.5em;
-  box-sizing: border-box;
+  width: 30%;
+  height: 20em;
+  margin: 0 1em;
 }
 
 .bookmark-inner-container {
-  overflow-y: scroll;
   height: 80%;
-  vertical-align: top;
+  overflow-y: scroll;
   padding-right: 6px;
-  box-sizing: border-box;
-
   scrollbar-width: thin;
-  scrollbar-color: var(--scrollbarColor) #ffffff00;
+  scrollbar-color: var(--scrollbarColor) transparent;
 }
 
 .bookmark-inner-container::-webkit-scrollbar {
   width: 6px;
 }
-.bookmark-inner-container::-webkit-scrollbar-track {
-  background: #ffffff00;
-}
+
 .bookmark-inner-container::-webkit-scrollbar-thumb {
   background-color: var(--scrollbarColor);
   border-radius: 6px;
-  border: 3px solid #ffffff00;
 }
 
 .bookmark-title {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--fg);
-  margin: 0em 0em 0.35em 0em;
+  margin: 0 0 0.35em;
 }
+
 .bookmark {
   text-decoration: none;
   color: var(--secondaryFg);
   display: block;
-  margin: 0.5em 0em;
+  font-size: 1.1rem;
+  margin: 1em 0;
 }
+
 .bookmark:hover {
   color: var(--fg);
+}
+
+@media only screen and (max-width: 960px) {
+  #clock {
+    margin-top: 1em;
+  }
+
+  #bookmark-container {
+    flex-direction: column;
+    width: 60%;
+  }
+
+  .bookmark-set {
+    width: auto;
+    margin: 1em 0;
+  }
 }
