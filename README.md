@@ -4,8 +4,7 @@
 
 Forked from: [danggoodcode](https://danggoodcode.com)
 
-
-![custom-homepage](https://github.com/user-attachments/assets/ebade698-8f52-4330-9d80-53ed8cd81c2f)
+<video alt="homepage" src="https://github.com/user-attachments/assets/ac201415-0e85-4a39-be03-c746a5cb3bef"> </video>
 
 
 ## Настройка
