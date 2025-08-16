@@ -1,6 +1,6 @@
 const searchEngines = {
     g: { name: "Google", url: "https://www.google.com/search?q=" },
-    d: { name: "DuckDuckGo", url: "https://duckduckgo.com/?q=" },
+    d:  { name: "DuckDuckGo", url: "https://duckduckgo.com/?q=" },
     yan: { name: "Yandex", url: "https://ya.ru/search/?text=" },
     y: { name: "YouTube", url: "https://www.youtube.com/results?search_query=" },
 };

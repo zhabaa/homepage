@@ -1,18 +1,23 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
 
 :root {
+  /* --bg: #000000; */
   --fg: #ffffff;
   --secondaryFg: #b3b3b3;
   --containerBg: #272727;
   --scrollbarColor: #3f3f3f;
+  
+  --searchBg: var(--containerBg);
   --fontFamily: "Roboto Mono", monospace;
   --background-image: url("../images/bg-image3.jpeg");
 }
 
 body {
-  margin: 0;
+  background-color: var(--bg);
+  margin: 0px;
 }
 
+/* типа фон */
 body::before {
   content: "";
   position: fixed;
@@ -26,7 +31,7 @@ body::before {
 }
 
 .container {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -35,36 +40,56 @@ body::before {
 }
 
 #clock {
-  font-family: var(--fontFamily);
   font-size: 3.5rem;
-  font-weight: 600;
+  font-weight: 700;
+  font-family: var(--fontFamily);
   color: var(--fg);
-  margin-bottom: 0.25em;
+  margin-bottom: .25em;
 }
 
 #search {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  background-color: var(--containerBg);
+  background-color: var(--searchBg);
   display: none;
   position: absolute;
+  box-sizing: border-box;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-#search-field {
+#search-field {  
   width: 90%;
+  min-height: 7em;
   padding: 0.75em 1em;
-  background-color: var(--containerBg);
-  border: none;
+  margin-top: 3em;
+  margin-bottom: 1em;
+
+  box-sizing: border-box;
+  text-align: center;
+  
   font-family: var(--fontFamily);
   font-size: 4rem;
+  background-color: var(--searchBg);
   color: var(--fg);
+  border: none;
   outline: none;
-  border-radius: 5px;
-  margin: 3em 0 1em;
-  text-align: center;
+  resize: none;
+
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+
+  line-height: 1.3;
+}
+
+.search-hint {
+  position: absolute;
+  top: 1.5em;
+  font-family: var(--fontFamily);
+  font-size: 2rem;
+  color: var(--secondaryFg);
+  pointer-events: none;
 }
 
 .weather-container {
@@ -78,11 +103,37 @@ body::before {
   text-align: center;
 }
 
+.inline {
+  display: inline-block;
+}
+
 #bookmark-container {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   width: 50%;
-  margin: 1em 0;
+  height: 20%;
+  margin: 1em 0em;
+}
+
+@media only screen and (max-width: 960px) {
+  .container {
+    height: auto;
+  }
+
+  #clock {
+    margin-top: 1em;
+  }
+
+  .container>#bookmark-container {
+    flex-direction: column;
+    width: 60%;
+  }
+
+  #bookmark-container>.bookmark-set {
+    width: auto;
+    margin: 1em 0em;
+  }
 }
 
 .bookmark-set {
@@ -90,33 +141,43 @@ body::before {
   background-color: var(--containerBg);
   border-radius: 10px;
   font-family: var(--fontFamily);
+  font-size: 0.85rem;
   width: 30%;
   height: 20em;
-  margin: 0 1em;
+  margin: 0em 1em;
+  box-sizing: border-box;
 }
 
 .bookmark-inner-container {
-  height: 80%;
   overflow-y: scroll;
+  height: 80%;
+  vertical-align: top;
   padding-right: 6px;
+  box-sizing: border-box;
+
   scrollbar-width: thin;
-  scrollbar-color: var(--scrollbarColor) transparent;
+  scrollbar-color: var(--scrollbarColor) #ffffff00;
 }
 
 .bookmark-inner-container::-webkit-scrollbar {
   width: 6px;
 }
 
+.bookmark-inner-container::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+
 .bookmark-inner-container::-webkit-scrollbar-thumb {
   background-color: var(--scrollbarColor);
   border-radius: 6px;
+  border: 3px solid #ffffff00;
 }
 
 .bookmark-title {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--fg);
-  margin: 0 0 0.35em;
+  margin: 0em 0em 0.35em 0em;
 }
 
 .bookmark {
@@ -124,25 +185,9 @@ body::before {
   color: var(--secondaryFg);
   display: block;
   font-size: 1.1rem;
-  margin: 1em 0;
+  margin: 1em 0em;
 }
 
 .bookmark:hover {
   color: var(--fg);
-}
-
-@media only screen and (max-width: 960px) {
-  #clock {
-    margin-top: 1em;
-  }
-
-  #bookmark-container {
-    flex-direction: column;
-    width: 60%;
-  }
-
-  .bookmark-set {
-    width: auto;
-    margin: 1em 0;
-  }
 }
