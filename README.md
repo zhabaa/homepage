@@ -40,7 +40,7 @@ const bookmarks = [
 
 - `!yan` - yandex
 
-- `!re` - Russian to Enghlish
+- `!re` - Russian to English
 
 - `!er` - English to Russian
 
